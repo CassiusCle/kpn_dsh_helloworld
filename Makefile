@@ -1,9 +1,9 @@
 PLATFORM=poc
-TENANT=cca-underlined
+TENANT=troef-tue
 DOCKER_REPO_URL=registry.cp.kpn-dsh.com/$(TENANT)
 VERSION=1
-tagname=example-py
-tenantuserid=2030
+tagname=consumer
+tenantuserid=2065
 image=$(DOCKER_REPO_URL)/$(tagname):$(VERSION)
 
 help:

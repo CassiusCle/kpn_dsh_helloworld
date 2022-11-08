@@ -7,7 +7,7 @@ RUN apk update && apk add openssl
 COPY dsh /home/dsh/dsh
 
 # dependencies for librdkafka
-RUN apk add alpine-sdk librdkafka librdkafka-dev 
+RUN apk add alpine-sdk librdkafka librdkafka-dev postgresql-dev
 
 # create dsh group and user
 ARG tenantuserid
@@ -16,7 +16,6 @@ RUN addgroup -g ${USERID} dsh && adduser -u ${USERID} -G dsh -D -h /home/dsh dsh
 
 # install
 RUN pip install googleapis-common-protos confluent-kafka==0.11.4 requests
-RUN pip install /home/dsh/dsh/lib/envelope-0.1.tar.gz
 
 # install required packages
 COPY src/ /home/dsh/app/
