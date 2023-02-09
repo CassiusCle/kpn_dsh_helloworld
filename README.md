@@ -99,7 +99,7 @@ Our final step is to create the actual service on our tenant that will produce o
         where <image_name> and `<version>` should correspond to the `tagname` and `VERSION` variables specified in step 2.
     -	`env` needs to be: 
          
-             { "STREAM": "scratch.test.<topic_name>" } 
+             { "STREAM": "scratch.<topic_name>.training" } 
         where <topic_name> is the name of your topic chosen in step 4. 
     - Click on the blue `Start service` button.
 
