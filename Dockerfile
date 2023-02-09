@@ -26,4 +26,4 @@ WORKDIR /home/dsh/app
 
 # entrypoint
 ENTRYPOINT ["/home/dsh/dsh/entrypoint.sh"]
-CMD ["python" ,"-u", "example.py"]
+CMD ["python" ,"-u", "example_helloworld.py"]
