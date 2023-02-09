@@ -6,15 +6,16 @@
 Welcome to the DSH tutorial: Hello World! In this tutorial, you will learn how to set up a simple *Hello World!* service that sends messages to a topic on KPN's Data Services Hub (DSH).
 
 **For who?**
+
 This tutorial is for everyone who wants to work with the DSH and is looking for a place to start. The tutorial is designed to require as little technical knowledge of the as possible and should be completeable after having had only a brief (high-level) introduction into the DSH and how it works.
 
 **Prerequisites:**
- - Install Docker
- - Install Maker
- - Install a code editor (e.g. VS Code)
- - Install Python 
- - Access to a tenant on the Data Services Hub
- - Access to Harbor
+- Install [Docker](https://www.docker.com/)
+- Install [GNU Make](https://www.gnu.org/software/make/)
+- Access to a tenant on the Data Services Hub
+- Access to a project on Harbor (of the same name as the tenant on DSH)
+
+If you want to play around with the code and test locally it is also recommended to have a code editor (e.g. VS Code) and Python installed on your machine.
 
 **Assumption**
 
@@ -54,28 +55,32 @@ As the focus of this tutorial is not writing code, this code is almost ready-for
     - Again, this can be any string. In this tutorial we will use `hello-world`.
  - `tenantuserid`: Your UserID on the tenant.
     - This can be found as follows:
-        1. Go to the DSH console (https://console.poc.kpn-dsh.com/)
+        1. Go to the [DSH Console](https://console.poc.kpn-dsh.com/)
         2. Login to the `training` tenant
-        3. Click on `Resources > Overview`
-        4. At the bottom of this page you can see the UserID formatted as `<number>:<number>`. Note that in this field the number only needs to be entered once.
-    
+        3. Click on `Resources >> Overview`
+        4. At the bottom of this page you can see the UserID formatted as `<number>:<number>`. The left number is your UserID. 
+        
 ## 3. Make Docker image and push to Harbor
 
 In this step a Docker image is build and subsequently pushed it to Harbor. From there it can be used on the DSH to deploy as a service.
 
 Having Maker installed makes this step very simple, because all of the Docker commands are already specified in the `Makefile`. This means that the only actions required in this step are the following:
- 1. Open the terminal on your machine
- 2. Navigate to the directory of the project
- 3. Run the following command[^1]:
+ 1. Login to [Harbor](https://registry.cp.kpn-dsh.com/)
+ 2. On the top-right: Click on `<your_username> >> User Profile`
+ 3. Remember your `Username` and copy your `CLI secret`
+ 4. Open the terminal on your machine
+ 5. Navigate to the directory of the project
+ 6. Run the following command[^1]:
           
           make all
-
+ 7. Enter the `Username` and `CLI secret` from step 3 if it asks for it.
+ 
 [^1]: For those interested in what this command does, please explore its definition in the `Makefile`.
 
 ### Optional: Checkout the Docker image on Harbor
 By running the `make all` command, the Docker image was pushed to the Harbor repository, where it is stored and ready to be deployed in a service on the DSH. 
 
-The `hello-world` image (along with the others) can be viewed by going to https://registry.cp.kpn-dsh.com/. After having logged in, the image can be found by clicking on `training > training/hello-world`. 
+The `hello-world` image (along with the others) can be viewed on [Harbor](https://registry.cp.kpn-dsh.com/). After having logged in, the image can be found by clicking on `training >> training/hello-world`. 
 This page shows the different versions[^2] of the image that have been uploaded to Harbor. 
 As you can see, the image is also scanned for potential security vulnerabilities. This can be ignored for this tutorial.
 
@@ -83,23 +88,20 @@ As you can see, the image is also scanned for potential security vulnerabilities
 
 ## 4. Create the Kafka topic (on the DSH)
 Now that our application is available as an image on Harbor, it is finally time to start working on the DSH! 
-The first thing that needs to be done on the DSH is to create a Kafka topic to which the `Hello World!` service will send messages. For this, a so-called scratch-topic[^3] (**link to page on scratch-topics**) will be 
-
-The first step is to login to the DSH console (https://console.training.kpn-dsh.com/).
-
-Go to `resources > topics` to get to the overview of which already exist on this tenant. We will then create a new topic for our service, click on the blue `+ Topic` button. 
-
-In the topic creation menu the only things that we still have to provide are the *Topic name* (`hello-world`) and the *# of partitions* (`1`). Fill these in and press the `create topic` button.
+The first thing that needs to be done on the DSH is to create a Kafka topic to which the `Hello World!` service will send messages. For this, a so-called scratch-topic[^3] (**link to page on scratch-topics**) will be used. A new Kafka topic is created as follows:
+1. Login to the [DSH Console](https://console.training.kpn-dsh.com/).
+2. Go to `resources >> topics` and click on the blue `+ Topic` button.
+3. Fill in the *Topic name* (`hello-world`) and the *# of partitions* (`1`). 
+4. Press the `create topic` button.
 
 [^3]: A scratch topic is a single kafka topic that can only be used and accessed by service from within the tenant in which it is created (Remove when Link is added).
 
 ## 5. Create the service (on the DSH)
-Our final step is to create the actual service on our tenant that will produce our data stream.
-
- 1. Go to `services > overview` on the DSH console and click on the blue `+ New Service` button. 
+The final step is to create the actual service on our tenant that will produce and consume the messages from the topic:
+ 1. Go to `services >> overview` on the DSH console and click on the blue `+ New Service` button. 
  2. Pick a fitting name (e.g. `demo-helloworld`) and continue.
- 3. On the next screen you will see a JSON entry containing specifications[^3] for our service. 
- For the service we are setting up in this tutorial, we will need to change the `image` and `env` entries. 
+ 3. The next screen shows a JSON entry containing the specifications[^3] for our service. 
+ For the service of this tutorial, only the `image` and `env` entries need to be changed: 
     -	`image` needs to be: 
      
              registry.cp.kpn-dsh.com/training/<image_name>:<version>
@@ -108,18 +110,18 @@ Our final step is to create the actual service on our tenant that will produce o
          
              { "STREAM": "scratch.<topic_name>.training" } 
         where <topic_name> is the name of your topic chosen in step 4. 
-    - Click on the blue `Start service` button.
+ 4. Click on the blue `Start service` button.
 
 Congratulations! You have now deployed your first service.
-Go to page bla bla to see if it is running sucessfully.
-If so next step to inspect the output :)
+
+On the DSH Console, the service can be seen in the list when navigating to `services >> overview`. Clicking on the service will show you its status and allow you to start/stop/delete it as well as give you access to the (error)logs produced during its deployment. If the service is running succesfully, the last thing to check-out is to inspect the data stream it produces (see the next step).
 
 [^3]: See the bottom of this page for a more detailed explanation of each of the entries (Move to somewhere else).
 
 ## 6. View output (on the DSH)
-Our service is now live and its producing data on the Kafka topic. In this last step we will show you how you can inspect the output of our service by viewing the Kafka topic. 
+Our service is now live and its producing data on the Kafka topic. This last step will show how to inspect the output of our service by viewing the Kafka topic. 
 
-The DSH provides two easy ways to view a kafka topic: 
+The DSH provides two easy ways to view a Kafka topic: 
 *Kafdrop* or *command line*.
  - *Kafdrop*: Run a Kafdrop application on the DSH and view the topic (**link to page on Kafdrop**).
  - *command line*: Open a command line terminal on the DSH and run the following command:
@@ -127,4 +129,3 @@ The DSH provides two easy ways to view a kafka topic:
          kcl consume scratch.<topic_name>.training
     where <topic_name> is the name of your topic chosen in step 4. 
 
-## Appendix
