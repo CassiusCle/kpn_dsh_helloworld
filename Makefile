@@ -1,9 +1,9 @@
 PLATFORM=poc
-TENANT=troef-tue
+TENANT=training
 DOCKER_REPO_URL=registry.cp.kpn-dsh.com/$(TENANT)
 VERSION=1
-tagname=consumer
-tenantuserid=2065
+tagname=hello-world
+tenantuserid=1054
 image=$(DOCKER_REPO_URL)/$(tagname):$(VERSION)
 
 help:
@@ -16,7 +16,7 @@ help:
 	@echo "push    - push the  image to jfrog"
 	@echo "show    - show the current make variables"
 login:
-	docker login $(DOCKER_REPO_URL) -u $(TENANT)
+	docker login $(DOCKER_REPO_URL)
 fix: 
 	find . -type f -print0 | xargs -0 dos2unix
 build:
@@ -26,7 +26,6 @@ rebuild:
 	docker build --no-cache -t $(tagname) -f Dockerfile --build-arg tenantuserid=$(tenantuserid) .
 	docker tag  $(tagname) $(image)
 all:
-	
 	make build
 	make push
 	make show
