@@ -2,8 +2,7 @@
 
 #  DSH tutorial: Hello World!
 
-Introductory text....
-
+## Introduction
 
 **Goal:**
 
@@ -20,10 +19,9 @@ Learn how to set up a simple *Hello World!* service on the Data Services Hub (DS
 
 **Assumption**
 
-The current tutorial is set-up with the assumption that the user has access to the `training` tenant on the `poc` platform. 
+The current tutorial is set-up with the assumption that the user has access to the `training` tenant on the `poc` platform of the DSH. 
 
  ## 1. Clone git repository
-
 
  The first step in this tutorial is to clone this git repository to your local machine. A simple way to do this is as follows:
  
@@ -35,9 +33,16 @@ The current tutorial is set-up with the assumption that the user has access to t
         git clone <git URL>
     where `<git URL>` is the URL from step 1.
 
- ## 2. Edit Makefile
+ ## 2. Explore the code
 
-One of the files in the repository that you just cloned is called `Makefile`. Open this file in a code editor and check if the variables at the top are correctly specified:
+In this second step we explore the code from the repository that we just cloned and make sure that everything is in order for our service to run correctly.
+Below we provide a brief description of elements of the repository and their function:
+-	`src/example.py`: This is a Python script with the code that produces the messages for our data stream.
+-	`Dockerfile`: This is a file with all the specifications needed by Docker to build a Docker image from our code.
+-	`Makefile`: This file defines various Docker commands to allow us to easily build and push the docker images to harbor.
+-	`dsh` folder: This folder contains code for allowing us to connect to the DSH.
+
+As the focus of this tutorial is not writing code, this code is almost ready-for-use straight out of the box. Only for the `Makefile` it is important to check if the variables at the top are specified correctly:
  -  `PLATFORM` : The platform on which you want to deploy the service
     - Should be `poc`
  - `TENANT` : The tenant on which you want to launch this service
