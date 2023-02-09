@@ -4,6 +4,7 @@ import signal
 import json
 import sys
 import logging
+import datetime
 
 # Set up logging
 logger = logging.getLogger('kafka_feed')
@@ -31,7 +32,7 @@ def wait_for_message():
         consumer.subscribe([TOPIC])
         
         while True:
-                msg = consumer.poll(1.0) # start consuming
+                msg = consumer.poll(1000) # start consuming
 
                 if msg is not None:
                         # print messages
@@ -78,7 +79,8 @@ def delivery_report(err, msg):
 def produce_message():
         producer = create_producer() 
         producer.poll(0)
-        producer.produce( topic = TOPIC, value = "{ key: hello world}", callback = delivery_report )
+        now = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        producer.produce( topic = TOPIC, value = f"{{{now}: Hello world!}}", callback = delivery_report )
         producer.flush()
 
 # Sigterm
