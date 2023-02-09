@@ -117,5 +117,5 @@ The DSH provides two easy ways to view a kafka topic:
  - *Kafdrop*: Run a Kafdrop application on the DSH and view the topic (**link to page on Kafdrop**).
  - *command line*: Open a command line terminal on the DSH and run the following command:
  
-         kcl consume scratch.test.<topic_name>
+         kcl consume scratch.<topic_name>.<training>
     where <topic_name> is the name of your topic chosen in step 4. 
