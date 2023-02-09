@@ -5,6 +5,9 @@
 ## Introduction
 Welcome to the DSH tutorial: Hello World! In this tutorial, you will learn how to set up a simple *Hello World!* service that sends messages to a topic on KPN's Data Services Hub (DSH).
 
+**For who?**
+This tutorial is for everyone who wants to work with the DSH and is looking for a place to start. The tutorial is designed to require as little technical knowledge of the as possible and should be completeable after having had only a brief (high-level) introduction into the DSH and how it works.
+
 **Prerequisites:**
  - Install Docker
  - Install Maker
@@ -79,15 +82,16 @@ As you can see, the image is also scanned for potential security vulnerabilities
 [^2]: This version corresponds to the one specified by the `VERSION` variable in step 2. 
 
 ## 4. Create the Kafka topic (on the DSH)
-Now that we have build our application, containerised it and pushed it to the relevant repository, we can finally start our work on the DSH! We first login to the DSH through the console on https://console.training.kpn-dsh.com/.
+Now that our application is available as an image on Harbor, it is finally time to start working on the DSH! 
+The first thing that needs to be done on the DSH is to create a Kafka topic to which the `Hello World!` service will send messages. For this, a so-called scratch-topic[^3] (**link to page on scratch-topics**) will be 
 
-We will now create a Kafka topic to which our `Hello World!` service will send messages. In this tutorial, we will be using a so called scratch-topic[^2] (**link to page on scratch-topics**). 
+The first step is to login to the DSH console (https://console.training.kpn-dsh.com/).
 
 Go to `resources > topics` to get to the overview of which already exist on this tenant. We will then create a new topic for our service, click on the blue `+ Topic` button. 
 
 In the topic creation menu the only things that we still have to provide are the *Topic name* (`hello-world`) and the *# of partitions* (`1`). Fill these in and press the `create topic` button.
 
-[^2]: A scratch topic is a single kafka topic that can only be used and accessed by service from within the tenant in which it is created (Remove when Link is added).
+[^3]: A scratch topic is a single kafka topic that can only be used and accessed by service from within the tenant in which it is created (Remove when Link is added).
 
 ## 5. Create the service (on the DSH)
 Our final step is to create the actual service on our tenant that will produce our data stream.
