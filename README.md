@@ -109,7 +109,7 @@ If so next step to inspect the output :)
 
 [^3]: See the bottom of this page for a more detailed explanation of each of the entries (Move to somewhere else).
 
-## 5. View the Kafka topic (output)
+## 6. View the Kafka topic (output)
 Our service is now live and its producing data on the Kafka topic. In this last step we will show you how you can inspect the output of our service by viewing the Kafka topic. 
 
 The DSH provides two easy ways to view a kafka topic: 
