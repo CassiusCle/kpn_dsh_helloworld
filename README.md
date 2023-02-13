@@ -105,11 +105,11 @@ The final step is to create the actual service on our tenant that will produce a
     -	`image` needs to be: 
      
              registry.cp.kpn-dsh.com/training/<image_name>:<version>
-        where <image_name> and `<version>` should correspond to the `tagname` and `VERSION` variables specified in step 2.
+        where `<image_name>` and `<version>` should correspond to the `tagname` and `VERSION` variables specified in step 2.
     -	`env` needs to be: 
          
              { "STREAM": "scratch.<topic_name>.training" } 
-        where <topic_name> is the name of your topic chosen in step 4. 
+        where `<topic_name>` is the name of your topic chosen in step 4. 
  4. Click on the blue `Start service` button.
 
 Congratulations! You have now deployed your first service.
@@ -127,5 +127,5 @@ The DSH provides two easy ways to view a Kafka topic:
  - *command line*: Open a command line terminal on the DSH and run the following command:
  
          kcl consume scratch.<topic_name>.training
-    where <topic_name> is the name of your topic chosen in step 4. 
+    where `<topic_name>` is the name of your topic chosen in step 4. 
 
