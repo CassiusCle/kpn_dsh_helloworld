@@ -49,7 +49,7 @@ As the focus of this tutorial is not writing code, this code is almost ready-for
     - This should be `poc`
  - `TENANT` : The tenant on which you want to launch this service
     - This should be `training`
- - `DOCKER_REPO_URL` : The url of the harbor repository to which our your Docker image will be pushed.
+ - `DOCKER_REPO_URL` : The url of the harbor repository to which your Docker image will be pushed.
     - This should be `registry.cp.kpn-dsh.com/$(TENANT)`
  - `VERSION` : The version of the docker image that we are going to upload. 
     - This can be any string, but why not start at `1`?
@@ -66,7 +66,7 @@ As the focus of this tutorial is not writing code, this code is almost ready-for
 
 In this step a Docker image is build and subsequently pushed it to Harbor. From there it can be used on the DSH to deploy as a service.
 
-Having Maker installed makes this step very simple, because all of the Docker commands are already specified in the `Makefile`. This means that the only actions required in this step are the following:
+Having GNU Maker installed makes this step very simple, because all of the Docker commands are already specified in the `Makefile`. This means that the only actions required in this step are the following:
  1. Login to [Harbor](https://registry.cp.kpn-dsh.com/)
  2. On the top-right: Click on `<your_username> >> User Profile`
  3. Remember your `Username` and copy your `CLI secret`
