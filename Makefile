@@ -26,6 +26,7 @@ rebuild:
 	docker build --no-cache -t $(tagname) -f Dockerfile --build-arg tenantuserid=$(tenantuserid) .
 	docker tag  $(tagname) $(image)
 all:
+	make login
 	make build
 	make push
 	make show
