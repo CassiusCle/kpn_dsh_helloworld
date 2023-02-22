@@ -74,7 +74,7 @@ Having GNU Maker installed makes this step very simple, because all of the Docke
  6. Run the following command[^3]:
           
           make all
-      Enter the `Username` and `CLI secret` (password) from step 3.
+ 7. Enter the `Username` and `CLI secret` (password) from step 3.
  
 
 [^2]: This is the directory of the code that was cloned in step 2. An easy check is to run the `pwd` (Print Working Directory) command in terminal and check if it outputs a directory ending in `\kpn_dsh_helloworld`. See the first note[^1] for tips on how to navigate the terminal.
