@@ -5,7 +5,7 @@
 ## Introduction
 Welcome to the DSH tutorial: Hello World! In this tutorial, you will learn how to set up a simple *Hello World!* service that sends messages to a topic on KPN's Data Services Hub (DSH).
 
-**For who?**
+**For whom?**
 
 This tutorial is for everyone who wants to work with the DSH and is looking for a place to start. The tutorial is designed to require as little technical knowledge of the as possible and should be completeable after having had only a brief (high-level) introduction into the DSH and how it works.
 
