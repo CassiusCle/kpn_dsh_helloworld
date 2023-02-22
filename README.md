@@ -42,6 +42,7 @@ Below you can find a brief description of elements of the repository:
 -	`src/example.py`: This is a Python script with the code that produces the messages for our data stream.
 -	`Dockerfile`: This is a file with all the specifications needed by Docker to build a Docker image from our code.
 -	`Makefile`: This file defines various Docker commands to allow us to easily build and push the docker images to harbor.
+- `.gitattributes`: This file prevents the line endings from being converted to CRLF on Windows (necessary for running our service on DSH)
 -	`dsh` folder: This folder contains code for allowing us to connect to the DSH.
 
 As the focus of this tutorial is not writing code, this code is almost ready-for-use straight out of the box. Only for the `Makefile` it is important to check if the variables at the top are specified correctly:
