@@ -27,7 +27,7 @@ The current tutorial is set-up with the assumption that the user has access to t
  
  1. Get the HTTPS URL of this repository by clicking on the green `<> Code` button on this git page.
  2. Open the terminal on your machine
- 3. Navigate to the desired directory[^1]
+ 3. Navigate to the directory to which you want to clone the code repository[^1]
  4. Run the following command: 
  
         git clone <git URL>
@@ -71,32 +71,36 @@ Having GNU Maker installed makes this step very simple, because all of the Docke
  2. On the top-right: Click on `<your_username> >> User Profile`
  3. Remember your `Username` and copy your `CLI secret`
  4. Open the terminal on your machine
- 5. Navigate to the directory of the project
- 6. Run the following command[^2]:
+ 5. Navigate to the directory of the project[^2]
+ 6. Run the following command[^3]:
           
           make all
- 7. Enter the `Username` and `CLI secret` from step 3 if it asks for it.
+      Enter the `Username` and `CLI secret` (password) from step 3.
  
-[^2]: For those interested in what this command does, please explore its definition in the `Makefile`.
+
+[^2]: This is the directory of the code that was cloned in step 2. An easy check is to run the `pwd` (Print Working Directory) command in terminal and check if it outputs a directory ending in `\kpn_dsh_helloworld`. See the first note[^1] for tips on how to navigate the terminal.
+
+
+[^3]: For those interested in what this command does, please explore its definition in the `Makefile`.
 
 ### Optional: Checkout the Docker image on Harbor
 By running the `make all` command, the Docker image was pushed to the Harbor repository, where it is stored and ready to be deployed in a service on the DSH. 
 
 The `hello-world` image (along with the others) can be viewed on [Harbor](https://registry.cp.kpn-dsh.com/). After having logged in, the image can be found by clicking on `training >> training/hello-world`. 
-This page shows the different versions[^3] of the image that have been uploaded to Harbor. 
+This page shows the different versions[^4] of the image that have been uploaded to Harbor. 
 As you can see, the image is also scanned for potential security vulnerabilities. This can be ignored for this tutorial.
 
-[^3]: This version corresponds to the one specified by the `VERSION` variable in step 2. 
+[^4]: This version corresponds to the one specified by the `VERSION` variable in step 2. 
 
 ## 4. Create the Kafka topic (on the DSH)
 Now that our application is available as an image on Harbor, it is finally time to start working on the DSH! 
-The first thing that needs to be done on the DSH is to create a Kafka topic to which the `Hello World!` service will send messages. For this, a so-called scratch-topic[^4] (**link to page on scratch-topics**) will be used. A new Kafka topic is created as follows:
+The first thing that needs to be done on the DSH is to create a Kafka topic to which the `Hello World!` service will send messages. For this, a so-called scratch-topic[^5] <!--- TODO: link to page on scratch-topics.--> will be used. A new Kafka topic is created as follows:
 1. Login to the [DSH Console](https://console.training.kpn-dsh.com/).
 2. Go to `resources >> topics` and click on the blue `+ Topic` button.
 3. Fill in the *Topic name* (`hello-world`) and the *# of partitions* (`1`). 
 4. Press the `create topic` button.
 
-[^4]: A scratch topic is a single kafka topic that can only be used and accessed by service from within the tenant in which it is created (Remove when Link is added).
+[^5]: A scratch topic is a single kafka topic that can only be used and accessed by service from within the tenant in which it is created.
 
 ## 5. Create the service (on the DSH)
 The final step is to create the actual service on our tenant that will produce and consume the messages from the topic:
