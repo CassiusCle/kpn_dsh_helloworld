@@ -11,7 +11,7 @@ This tutorial is for everyone who wants to work with the DSH and is looking for 
 
 **Prerequisites:**
 - Install [Docker](https://www.docker.com/)
-- Install [GNU Make](https://www.gnu.org/software/make/)
+- Install GNU Make (First install [Chocolatey](chocolatey.org/install) and then run command ```choco install make``` in the terminal)
 - Access to a tenant on the Data Services Hub
 - Access to a project on Harbor (of the same name as the tenant on DSH)
 
