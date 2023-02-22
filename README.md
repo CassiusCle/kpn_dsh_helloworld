@@ -24,8 +24,7 @@ The current tutorial is set-up with the assumption that the user has access to t
  ## 1. Clone git repository
 
  The first step in this tutorial is to clone this git repository to your local machine. A simple way to do this is as follows:
- 
- 1. Get the HTTPS URL of this repository by clicking on the green `<> Code` button on this git page.
+ 1. Get the HTTPS URL of this repository by clicking on the <!---green `<> Code`--> <img src="https://user-images.githubusercontent.com/24662859/220602264-cd6f39d2-e2fb-41d1-a466-6994c38a8c57.png" height="30"/> button on this git page.
  2. Open the terminal on your machine
  3. Navigate to the directory to which you want to clone the code repository[^1]
  4. Run the following command: 
@@ -96,15 +95,15 @@ As you can see, the image is also scanned for potential security vulnerabilities
 Now that our application is available as an image on Harbor, it is finally time to start working on the DSH! 
 The first thing that needs to be done on the DSH is to create a Kafka topic to which the `Hello World!` service will send messages. For this, a so-called scratch-topic[^5] <!--- TODO: link to page on scratch-topics.--> will be used. A new Kafka topic is created as follows:
 1. Login to the [DSH Console](https://console.training.kpn-dsh.com/).
-2. Go to `resources >> topics` and click on the blue `+ Topic` button.
+2. Go to `resources >> topics` and click on the <!---blue `+ Topic`--> <img src="https://user-images.githubusercontent.com/24662859/220603073-b49f875d-d3f4-4dde-b0e0-7388a575422c.png" height="30"/> button.
 3. Fill in the *Topic name* (`hello-world`) and the *# of partitions* (`1`). 
-4. Press the `create topic` button.
+4. Press the <!--`create topic`--> <img src="https://user-images.githubusercontent.com/24662859/220603333-84e993f9-018b-4017-9d5d-a074c2ef619a.png" height="30"/> button.
 
 [^5]: A scratch topic is a single kafka topic that can only be used and accessed by service from within the tenant in which it is created.
 
 ## 5. Create the service (on the DSH)
 The final step is to create the actual service on our tenant that will produce and consume the messages from the topic:
- 1. Go to `services >> overview` on the DSH console and click on the blue `+ New Service` button. 
+ 1. Go to `services >> overview` on the DSH console and click on the <!---blue `+ New Service`--> <img src="https://user-images.githubusercontent.com/24662859/220603879-c36503af-5ee2-4044-b3f8-dd64aa9eacd7.png" height="30"/> button.
  2. Pick a fitting name (e.g. `demo-helloworld`) and continue.
  <!---3. The next screen shows a JSON entry containing the specifications[^5] for our service. -->
  3. The next screen shows a JSON entry containing the specifications for our service. 
@@ -117,7 +116,7 @@ The final step is to create the actual service on our tenant that will produce a
          
              { "STREAM": "scratch.<topic_name>.training" } 
         where `<topic_name>` is the name of your topic chosen in step 4. 
- 4. Click on the blue `Start service` button.
+ 4. Click on the <!---blue `Start service`--> <img src="https://user-images.githubusercontent.com/24662859/220604054-cc21d7f3-b120-4b22-9231-84c22c56c190.png" height="30"/> button.
 
 Congratulations! You have now deployed your first service.
 
@@ -140,6 +139,5 @@ The DSH provides two easy ways to view a Kafka topic:
 The last step of this tutorial is to stop the service we have just created and deployed. Otherwise, it will keep producing output and using resources on this tenant. 
 The way to stop a service is as follows:
  1. Go to `services >> overview` on the DSH console and click on the service that was created in step 5. 
- 2. Click on the blue `□` button to stop the service.
- 3. (Optional): If you are certain that you will not (want to) use this service again, you can also remove the service by clicking the red trash-bin button on the top right.
-
+ 2. Click on the <!---blue `□`--> <img src="https://user-images.githubusercontent.com/24662859/220604297-23835a26-11a1-40f6-9969-63006495a034.png" height="30"/> button to stop the service.
+ 3. (Optional): If you are certain that you will not (want to) use this service again, you can also remove the service by clicking the <!---red trash-bin--> <img src="https://user-images.githubusercontent.com/24662859/220604313-2db36764-3435-403e-8627-79414326f935.png" height="30"/> button on the top right.
