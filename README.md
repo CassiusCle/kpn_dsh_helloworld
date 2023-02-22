@@ -10,6 +10,7 @@ Welcome to the DSH tutorial: Hello World! In this tutorial, you will learn how t
 This tutorial is for everyone who wants to work with the DSH and is looking for a place to start. The tutorial is designed to require as little technical knowledge of the as possible and should be completeable after having had only a brief (high-level) introduction into the DSH and how it works.
 
 **Prerequisites:**
+- Install [Git](https://github.com/git-guides/install-git/)
 - Install [Docker](https://www.docker.com/)
 - Install GNU Make (First install [Chocolatey](chocolatey.org/install) and then run command ```choco install make``` in the terminal)
 - Access to a tenant on the Data Services Hub
@@ -26,7 +27,7 @@ The current tutorial is set-up with the assumption that the user has access to t
  The first step in this tutorial is to clone this git repository to your local machine. A simple way to do this is as follows:
  1. Get the HTTPS URL of this repository by clicking on the <!---green `<> Code`--> <img src="https://user-images.githubusercontent.com/24662859/220602264-cd6f39d2-e2fb-41d1-a466-6994c38a8c57.png" height="30"/> button on this git page.
  2. Open the terminal on your machine
- 3. Navigate to the directory to which you want to clone the code repository[^1]
+ 3. Navigate to the directory to which you want to clone the code repository[^1] (e.g. your downloads folder)
  4. Run the following command: 
  
         git clone <git URL>
@@ -69,12 +70,13 @@ Having GNU Maker installed makes this step very simple, because all of the Docke
  1. Login to [Harbor](https://registry.cp.kpn-dsh.com/)
  2. On the top-right: Click on `<your_username> >> User Profile`
  3. Remember your `Username` and copy your `CLI secret`
- 4. Open the terminal on your machine
- 5. Navigate to the directory of the project[^2]
- 6. Run the following command[^3]:
+ 4. Make sure that Docker is running on your machine
+ 5. Open the terminal on your machine
+ 6. Navigate to the directory of the project[^2]
+ 7. Run the following command[^3]:
           
           make all
- 7. Enter the `Username` and `CLI secret` (password) from step 3.
+ 8. Enter the `Username` and `CLI secret` (password) from step 3.
  
 
 [^2]: This is the directory of the code that was cloned in step 2. An easy check is to run the `pwd` (Print Working Directory) command in terminal and check if it outputs a directory ending in `\kpn_dsh_helloworld`. See the first note[^1] for tips on how to navigate the terminal.
