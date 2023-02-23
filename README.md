@@ -18,7 +18,7 @@ This tutorial is for everyone who wants to work with the DSH and is looking for 
 
 If you want to play around with the code and test locally it is also recommended to have a code editor (e.g. VS Code) and Python installed on your machine.
 
-[^1]: For Windows: First install [Chocolatey](https://chocolatey.org/install) and then run command ```choco install make``` in the terminal. For OSX: First install [Homebrew](https://chocolatey.org/install) and then run command ```brew install make``` in the terminal.
+[^1]: For Windows: First install [Chocolatey](https://chocolatey.org/install) and then run command ```choco install make``` in the terminal. For OSX: First install [Homebrew](https://brew.sh) and then run command ```brew install make``` in the terminal.
 
 **Assumption**
 
